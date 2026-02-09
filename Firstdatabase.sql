@@ -5,6 +5,7 @@ USE dbemp1;
 -- 2. Create Table 
 Drop table if exists employee;
 
+
 CREATE TABLE employee (
     EmployeeID varchar(10) PRIMARY KEY, 
     FirstName varchar(20),
@@ -17,6 +18,22 @@ CREATE TABLE employee (
     JoinedDate date,
     Salary decimal(15,2) 
 );
+Drop table if exists customer;
+CREATE TABLE customer (
+customerId varchar(10) primary key,
+firstName varchar(20),
+lastName varchar(20),
+gender char(1),
+email varchar(20) unique,
+city varchar (20)
+);
+
+INSERT INTO customer (customerID, firstName, lastName,gender, email, city) VALUES
+('C001', 'Biraj', 'Shrestha', 'M', 'saimon@email.com', 'Lalitpur');
+
+select orders.orderId,customer.customerId, orders.orderdate 
+from orders, customer
+where orders.customerId = customer.customerId;
 
 
 INSERT INTO employee VALUES
@@ -42,3 +59,28 @@ SELECT DepartmentName, MIN(Salary) as MinSalary FROM employee GROUP BY Departmen
 
 SELECT * FROM employee 
 WHERE EmployeeID IN (SELECT DISTINCT ManagerId FROM employee);
+
+Update employee set FirstName = 'Saimon Shrestha' where EmployeeID = "001"; 
+ SELECT * FROM employee where employeeID = '001';
+ 
+Update employee set FirstName = 'Mohan Dai' where EmployeeID = '002';
+select * from employee where employeeID = '002';
+
+select * from employee 
+where FirstName Like 's%';
+
+select * from employee 
+where FirstName Like '%n';
+
+ SELECT FirstName, LastName FROM employee 
+ WHERE Salary > 1000 
+ LIMIT 2;
+ 
+ select orders.orderId,
+ customers.customerId, order.orderdate,
+ from orders, customer 
+ where orders.customerId = customer.customerId;
+
+
+
+
