@@ -28,8 +28,18 @@ email varchar(20) unique,
 city varchar (20)
 );
 
+Create table orders (
+orderId varchar(20) primary key,
+customerId varchar(20),
+orderdate date,
+Foreign key (customerId) REFERENCES customer(customerId)
+);
+
+
 INSERT INTO customer (customerID, firstName, lastName,gender, email, city) VALUES
 ('C001', 'Biraj', 'Shrestha', 'M', 'saimon@email.com', 'Lalitpur');
+
+INSERT INTO orders VALUES ('OR001', 'C001', '2024-02-09');
 
 select orders.orderId,customer.customerId, orders.orderdate 
 from orders, customer
@@ -77,7 +87,7 @@ where FirstName Like '%n';
  LIMIT 2;
  
  select orders.orderId,
- customers.customerId, order.orderdate,
+ customer.customerId, orders.orderdate
  from orders, customer 
  where orders.customerId = customer.customerId;
 
