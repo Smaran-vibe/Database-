@@ -1,0 +1,17 @@
+USE startersql;
+
+ SELECT * FROM Users;
+ SELECT * FROM addresses;
+ SELECT * FROM admin_users;
+-- SELECT users.name, addresses.city,addresses.state,addresses.pincode
+-- From users
+-- -- inner join addresses on users.id = addresses.user_id;
+-- -- Left join addresses on users.id = addresses.user_id;
+-- Right join addresses on users.id = addresses.user_id;
+
+SELECT name,salary FROM users
+UNION 
+SELECT name,salary FROM admin_users;
+
+
+

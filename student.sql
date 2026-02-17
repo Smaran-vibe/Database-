@@ -30,3 +30,4 @@ INSERT INTO Std_Course (Course_code, std_id, subject) VALUES
 
 SELECT * FROM vidharthi;
 SELECT * FROM Std_Course;
+
