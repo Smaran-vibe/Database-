@@ -1,9 +1,24 @@
 USE startersql;
 SET autocommit = 0;
-SELECT * FROM users;
+
+
+-- ALTER TABLE users
+-- ADD column referred_by_id INT;
+
+-- UPDATE users set referred_by_id = 1 WHERE id in (2,3,4,5,6,7,8,9,10);
+-- UPDATE users set referred_by_id = 2 WHERE id in (11,12,13,14,15,16,22);
+-- SELECT * FROM users;
+
+SELECT 
+a.id,
+a.name AS user_name,
+b.name AS referred_by
+FROM users a
+Left JOIN users b ON a.referred_by_id = b.id;
+
 
 -- DELETE FROM users where id = 3;
-commit;
+-- commit;
 -- ROLLBACK;
 -- DELETE FROM users where id = 3;
 
@@ -69,6 +84,9 @@ commit;
 --        FLOOR(salary) AS floored,
 --        CEIL(salary) AS ceiled
 -- FROM users;
+
+-- SELECT COUNT(*) AS total_users FROM users;
+-- SELECT id FROM users;
 
 
 
