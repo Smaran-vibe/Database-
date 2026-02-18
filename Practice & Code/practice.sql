@@ -17,7 +17,8 @@ USE startersql;
 
 SELECT name,salary,email,'USER' as role FROM users
 UNION ALL
-SELECT name,salary,email, 'Admin' as role FROM admin_users;
+SELECT name,salary,email, 'Admin' as role FROM admin_users
+ORDER BY date_of_birth;
 
 
 
