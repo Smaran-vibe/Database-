@@ -25,10 +25,16 @@ UPDATE users set referred_by_id = 2 WHERE id in (11,12,13,14,15,16,22);
 -- SELECT name,email FROM rich_users;
 -- UPDATE users set salary = 2000000 where id = 14;
 
--- subquery 
+-- subquery inception
 SELECT AVG(salary) FROM users;
 SELECT * FROM users where salary > (SELECT AVG(salary) FROM users);
 SELECT * FROM users where salary < (SELECT AVG(salary) FROM users);
+
+SELECT id,name,referred_by_id
+From users
+Where referred_by_id IN 
+(SELECT id from users where salary >(SELECT AVG(salary) FROM users )
+);
 
 
  SELECT 
