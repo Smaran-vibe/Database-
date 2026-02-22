@@ -1,19 +1,21 @@
 USE startersql;
 SET autocommit = 0;
 
+SHOW indexes FROM users;
+
 
 -- ALTER TABLE users
 -- ADD column referred_by_id INT;
 
 -- UPDATE users set referred_by_id = 1 WHERE id in (2,3,4,5,6,7,8,9,10);
 -- UPDATE users set referred_by_id = 2 WHERE id in (11,12,13,14,15,16,22);
- SELECT * FROM users;
+--  SELECT * FROM users;
 
 -- CREATE VIEW rich_users as 
 -- SELECT * FROM users where salary > 70000;
 
-SELECT name,email FROM rich_users;
-UPDATE users set salary = 2000000 where id = 14;
+-- SELECT name,email FROM rich_users;
+-- UPDATE users set salary = 2000000 where id = 14;
 
 
 
