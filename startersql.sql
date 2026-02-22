@@ -2,6 +2,8 @@ USE startersql;
 SET autocommit = 0;
 
 SHOW indexes FROM users;
+-- CREATE INDEX ind_ex on users(gender);
+-- CREATE INDEX ind_dob_salary on users (date_of_birth,salary);
 
 
 -- ALTER TABLE users
