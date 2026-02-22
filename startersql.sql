@@ -36,6 +36,10 @@ Where referred_by_id IN
 (SELECT id from users where salary >(SELECT AVG(salary) FROM users )
 );
 
+SELECT id,name,email,
+(SELECT AVG(salary) FROM users) as Avg_Salary
+From users ;
+
 
  SELECT 
  a.id,
