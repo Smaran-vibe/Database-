@@ -5,6 +5,11 @@ SHOW indexes FROM users;
 -- CREATE INDEX ind_ex on users(gender);
 -- CREATE INDEX ind_dob_salary on users (date_of_birth,salary);
 
+SELECT * FROM users
+WHERE gender = "Female" and salary > 70000;
+
+Drop index ind_ex on users;
+
 
 -- ALTER TABLE users
 -- ADD column referred_by_id INT;
