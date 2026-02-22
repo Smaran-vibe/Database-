@@ -1,5 +1,6 @@
 USE startersql;
 SET autocommit = 0;
+SELECT * FROM users;
 
 SHOW indexes FROM users;
 -- CREATE INDEX ind_ex on users(gender);
@@ -14,9 +15,9 @@ Drop index ind_ex on users;
 -- ALTER TABLE users
 -- ADD column referred_by_id INT;
 
--- UPDATE users set referred_by_id = 1 WHERE id in (2,3,4,5,6,7,8,9,10);
--- UPDATE users set referred_by_id = 2 WHERE id in (11,12,13,14,15,16,22);
---  SELECT * FROM users;
+UPDATE users set referred_by_id = 1 WHERE id in (2,3,4,5,6,7,8,9,10);
+UPDATE users set referred_by_id = 2 WHERE id in (11,12,13,14,15,16,22);
+  SELECT * FROM users;
 
 -- CREATE VIEW rich_users as 
 -- SELECT * FROM users where salary > 70000;
@@ -24,14 +25,18 @@ Drop index ind_ex on users;
 -- SELECT name,email FROM rich_users;
 -- UPDATE users set salary = 2000000 where id = 14;
 
+-- subquery 
+SELECT AVG(salary) FROM users;
+SELECT * FROM users where salary > (SELECT AVG(salary) FROM users);
+SELECT * FROM users where salary < (SELECT AVG(salary) FROM users);
 
 
--- SELECT 
--- a.id,
--- a.name AS user_name,
--- b.name AS referred_by
--- FROM users a
--- Left JOIN users b ON a.referred_by_id = b.id;
+ SELECT 
+ a.id,
+a.name AS user_name,
+ b.name AS referred_by
+FROM users a
+ Left JOIN users b ON a.referred_by_id = b.id;
 
 
 -- DELETE FROM users where id = 3;
