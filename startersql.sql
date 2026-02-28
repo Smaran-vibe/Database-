@@ -3,7 +3,9 @@ SET autocommit = 0;
 SELECT * FROM users;
 
 SELECT gender,avg(salary) as 'Average Salary' FROM users group by gender;
-Select gender,avg (salary) as 'Avg',count(*) as 'Count' From users group by gender; 
+Select gender as 'Gender',avg (salary) as 'Avg',count(*) as 'Count' 
+From users group by gender
+Having avg(salary) > 65000; 
 
 SHOW indexes FROM users;
 -- CREATE INDEX ind_ex on users(gender);
