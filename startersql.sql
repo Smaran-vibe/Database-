@@ -4,7 +4,7 @@ SELECT * FROM users;
 
 SELECT gender,avg(salary) as 'Average Salary' FROM users group by gender;
 Select gender as 'Gender',avg (salary) as 'Avg',count(*) as 'Count' 
-From users group by gender WITH ROLLUP  -- rollup is for weightage average -- 
+From users group by gender WITH ROLLUP  -- rollup is for weightage averages -- 
 
 -- Having clause is only used after group by instead of where 
 Having avg(salary) > 65000; 
