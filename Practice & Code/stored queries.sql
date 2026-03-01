@@ -21,4 +21,5 @@ DELIMITER $$
 
 	-- CALL select_users();
 	-- CALL ADDUSER ('Samar Kun','madamji60@gmail.com','male','2007-12-09','69000');
+    CALL ADDUSER ('Bipin Danga','Embassy@gmai.com','other','2006-10-21','96000');
 
