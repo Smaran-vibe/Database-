@@ -135,6 +135,31 @@ SELECT firstname, lastname, salary
 FROM Employee
 WHERE salary > (SELECT AVG(salary) FROM Employee);
 
+
+
+SET FOREIGN_KEY_CHECKS = 0; 
+TRUNCATE TABLE Employee;
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+INSERT INTO Employee (empID, firstname, lastname, gender, DeptID, salary) VALUES 
+(1, 'Aayush', 'Sharma', 'Male', 101, 95000.00),
+(2, 'Sita', 'Thapa', 'Female', 101, 85000.00),
+(3, 'Binod', 'Chaudhary', 'Male', 102, 75000.00),
+(4, 'Priya', 'Adhikari', 'Female', 103, 65000.00);
+
+
+SELECT * FROM Employee;
+
+
+
+SELECT empID, firstname, salary FROM Employee;
+
+SELECT firstname, lastname, salary
+FROM Employee
+WHERE salary > (SELECT AVG(salary) FROM Employee);
+
+SELECT * FROM Employee;
 	 
 	 
 
