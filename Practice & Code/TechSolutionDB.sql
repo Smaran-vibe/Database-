@@ -1,0 +1,96 @@
+-- CREATE DATABASE  TechSolutionsDB;
+ USE TechSolutionsDB;
+
+	 Create Table if not exists Department(
+	 DeptID INT primary key,
+	 DeptName varchar(30) NOT NULL,
+	 Location varchar(50)
+	);
+
+-- CREATE TABLE Employee (
+--     empID INT PRIMARY KEY,
+--     firstname VARCHAR(50) NOT NULL,
+--     lastname VARCHAR(50) NOT NULL,
+--     gender VARCHAR(10),
+--     DeptID int(10),
+--     FOREIGN KEY (DeptID) REFERENCES Department(DeptID)
+-- );
+
+-- Create Table Project (
+-- ProjectID int primary key,
+-- ProjectName varchar(50),
+-- StartDate date,
+-- EndDate date,
+-- Budget Decimal(15,2),
+-- DeptID INT(10),        
+-- FOREIGN KEY (DeptID) REFERENCES Department(DeptID)
+-- );
+
+ Create Table Works_on (
+ EmpID int,
+ ProjectID int,
+ Primary key (EmpID, ProjectID),
+ foreign key (EmpID) references Employee(empID),
+ foreign key (ProjectID) references Project(ProjectID),
+ HoursWorked Decimal(5,2)
+ );
+
+-- 1. Insert Departments first (Parent table)
+INSERT INTO Department (DeptID, DeptName, Location) VALUES 
+(101, 'IT Services', 'Lalitpur'),
+(102, 'Digital Marketing', 'Kathmandu'),
+(103, 'Human Resources', 'Pokhara');
+
+-- 2. Insert Employee (References Department)
+INSERT INTO Employee (empID, firstname, lastname, gender, DeptID) VALUES 
+(1, 'Aayush', 'Sharma', 'Male', 101),
+(2, 'Sita', 'Thapa', 'Female', 101),
+(3, 'Binod', 'Chaudhary', 'Male', 102),
+(4, 'Priya', 'Adhikari', 'Female', 103);
+
+-- 3. Insert Projects (References Department)
+INSERT INTO Project (ProjectID, ProjectName, StartDate, EndDate, Budget, DeptID) VALUES 
+(501, 'Cloud Migration', '2024-01-01', '2024-06-30', 500000.00, 101),
+(502, 'SEO Campaign', '2024-02-15', '2024-05-15', 120000.00, 102);
+
+-- 4. Insert Works_on (References Employee AND Project)
+INSERT INTO Works_on (EmpID, ProjectID, HoursWorked) VALUES 
+(1, 501, 40.50),
+(2, 501, 35.00),
+(3, 502, 20.00);
+
+ALTER TABLE Employee ADD COLUMN salary DECIMAL(10, 2);
+
+UPDATE Employee SET salary = 65000.00 WHERE empID = 1;
+UPDATE Employee SET salary = 72000.00 WHERE empID = 2;
+UPDATE Employee SET salary = salary * 1.10 WHERE empID = 1;
+
+SELECT * FROM Employee 
+Where salary > 50000;
+
+DELETE FROM Project 
+where ProjectID = 2 ;
+
+
+SELECT FirstName,LastName,Salary FROM Employee
+ ORDER BY FirstName DESC;
+ 
+ SELECT E.firstname, E.lastname, D.DeptName
+FROM Employee E
+JOIN Department D ON E.DeptID = D.DeptID
+WHERE D.DeptName = 'IT Services';
+ 
+
+ 
+ 
+
+
+
+
+
+
+	
+
+
+
+
