@@ -75,11 +75,36 @@ where ProjectID = 2 ;
 SELECT FirstName,LastName,Salary FROM Employee
  ORDER BY FirstName DESC;
  
- SELECT E.firstname, E.lastname, D.DeptName
+SELECT E.firstname, E.lastname, D.DeptName
 FROM Employee E
 JOIN Department D ON E.DeptID = D.DeptID
 WHERE D.DeptName = 'IT Services';
- 
+
+SELECT D.DeptName, COUNT(E.empID) AS Total_Employees
+FROM Department D
+LEFT JOIN Employee E ON D.DeptID = E.DeptID
+GROUP BY D.DeptName;
+
+ALTER TABLE Employee ADD COLUMN HireDate DATE;
+UPDATE Employee SET HireDate = '2023-05-10' WHERE empID = 1;
+UPDATE Employee SET HireDate = '2021-11-20' WHERE empID = 2; 
+
+SELECT firstname, HireDate FROM Employee;
+
+UPDATE Employee SET HireDate = '2023-06-15' WHERE empID = 1;
+
+
+UPDATE Employee SET HireDate = '2024-02-01' WHERE empID = 2;
+
+
+UPDATE Employee SET HireDate = '2020-10-10' WHERE empID = 3;
+
+UPDATE Employee SET HireDate = '2023-01-01' WHERE HireDate IS NULL;
+
+SELECT firstname, lastname, HireDate 
+FROM Employee 
+WHERE HireDate > '2021-01-01';
+
 
  
  
