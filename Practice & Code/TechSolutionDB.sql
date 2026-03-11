@@ -131,6 +131,9 @@ GROUP BY D.DeptName
 ORDER BY Employee_Count DESC
 LIMIT 1;
 
+SELECT firstname, lastname, salary
+FROM Employee
+WHERE salary > (SELECT AVG(salary) FROM Employee);
 
 	 
 	 
