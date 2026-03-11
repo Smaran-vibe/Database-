@@ -8,7 +8,7 @@
 		);
 
 	 CREATE TABLE Employee (
-		empID INT PRIMARY KEY,
+	    empID INT PRIMARY KEY,
 		firstname VARCHAR(50) NOT NULL,
 		lastname VARCHAR(50) NOT NULL,
 		gender VARCHAR(10),
@@ -118,6 +118,8 @@
 	FROM Project P
 	JOIN Works_on W ON P.ProjectID = W.ProjectID
 	GROUP BY P.ProjectName;
+    
+    
 
 	 
 	 
