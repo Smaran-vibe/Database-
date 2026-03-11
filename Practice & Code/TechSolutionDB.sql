@@ -105,6 +105,19 @@ SELECT firstname, lastname, HireDate
 FROM Employee 
 WHERE HireDate > '2021-01-01';
 
+SELECT E.firstname, E.lastname, D.DeptName
+FROM Employee E
+JOIN Department D ON E.DeptID = D.DeptID;
+
+SELECT E.firstname, E.lastname, P.ProjectName
+FROM Employee E
+JOIN Works_on W ON E.empID = W.EmpID
+JOIN Project P ON W.ProjectID = P.ProjectID;
+
+SELECT P.ProjectName, SUM(W.HoursWorked) AS Total_Hours
+FROM Project P
+JOIN Works_on W ON P.ProjectID = W.ProjectID
+GROUP BY P.ProjectName;
 
  
  
