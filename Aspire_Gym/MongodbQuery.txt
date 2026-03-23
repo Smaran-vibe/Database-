@@ -1,0 +1,151 @@
+Microsoft Windows [Version 10.0.26200.8037]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Asus>mongosh "mongodb+srv://cluster0.2xkj9nd.mongodb.net/" --apiVersion 1 --username Smaran
+Current Mongosh Log ID: 69c0a0db8e00b7f134114029
+Connecting to:          mongodb+srv://<credentials>@cluster0.2xkj9nd.mongodb.net/?appName=mongosh+2.8.1
+Using MongoDB:          8.0.20 (API Version 1)
+Using Mongosh:          2.8.1
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+Atlas atlas-hiqq6o-shard-0 [primary] test> use mydb
+switched to db mydb
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.insertMany([{name:"Ram",age:19},{name: "Sita",age:21},{name:"Roronoa",age:22}, {name: "Shyam",age:18}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69c0a3308e00b7f13411402a'),
+    '1': ObjectId('69c0a3308e00b7f13411402b'),
+    '2': ObjectId('69c0a3308e00b7f13411402c'),
+    '3': ObjectId('69c0a3308e00b7f13411402d')
+  }
+}
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> show db
+MongoshInvalidInputError: [COMMON-10001] 'db' is not a valid argument for "show".
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> show dbs
+mydb           48.00 KiB
+sample_mflix  175.45 MiB
+admin         356.00 KiB
+local         144.39 GiB
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.insertMany([{name:"Smaran",age:"19",Grade:"A"}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('69c0a52d8e00b7f13411402e') }
+}
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find().pretty()
+[
+  { _id: ObjectId('69c0a3308e00b7f13411402a'), name: 'Ram', age: 19 },
+  { _id: ObjectId('69c0a3308e00b7f13411402b'), name: 'Sita', age: 21 },
+  { _id: ObjectId('69c0a3308e00b7f13411402c'), name: 'Roronoa', age: 22 },
+  { _id: ObjectId('69c0a3308e00b7f13411402d'), name: 'Shyam', age: 18 },
+  {
+    _id: ObjectId('69c0a52d8e00b7f13411402e'),
+    name: 'Smaran',
+    age: '19',
+    Grade: 'A'
+  }
+]
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find(age: {$gt:20})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:20)
+
+> 1 | db.students.find(age: {$gt:20})
+    |                     ^
+  2 |
+
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find(age: {$gt:20}) .pretty()
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:20)
+
+> 1 | db.students.find(age: {$gt:20}) .pretty()
+    |                     ^
+  2 |
+
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find(age: {$gt:20}).pretty()
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:20)
+
+> 1 | db.students.find(age: {$gt:20}).pretty()
+    |                     ^
+  2 |
+
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find({age: {$gt:20}).pretty()
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:31)
+
+> 1 | db.students.find({age: {$gt:20}).pretty()
+    |                                ^
+  2 |
+
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find({age: {$gt:20}}).pretty()
+[
+  { _id: ObjectId('69c0a3308e00b7f13411402b'), name: 'Sita', age: 21 },
+  { _id: ObjectId('69c0a3308e00b7f13411402c'), name: 'Roronoa', age: 22 }
+]
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find({grade: {$gt:"A"}}).pretty()
+
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find({grade: {$gt: A}}).pretty()
+ReferenceError: A is not defined
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find({grade: {$gt: 'A'}}).pretty()
+
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find({grade: {$gt: "A"}).pretty()
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:35)
+
+> 1 | db.students.find({grade: {$gt: "A"}).pretty()
+    |                                    ^
+  2 |
+
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find({grade:"A"}).pretty()
+
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find({name:'Roronoa'}).pretty()
+[
+  { _id: ObjectId('69c0a3308e00b7f13411402c'), name: 'Roronoa', age: 22 }
+]
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.updateOne({name: "Ram"},{$set:{name:"Luffy"}}]
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:57)
+
+> 1 | db.students.updateOne({name: "Ram"},{$set:{name:"Luffy"}}]
+    |                                                          ^
+  2 |
+
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.updateOne(
+|   { name: "Ram" },
+|   { $set: { name: "Luffy" } }
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.deleteOne({name: "sita"})
+{ acknowledged: true, deletedCount: 0 }
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find().pretty()
+[
+  { _id: ObjectId('69c0a3308e00b7f13411402a'), name: 'Luffy', age: 19 },
+  { _id: ObjectId('69c0a3308e00b7f13411402b'), name: 'Sita', age: 21 },
+  { _id: ObjectId('69c0a3308e00b7f13411402c'), name: 'Roronoa', age: 22 },
+  { _id: ObjectId('69c0a3308e00b7f13411402d'), name: 'Shyam', age: 18 },
+  {
+    _id: ObjectId('69c0a52d8e00b7f13411402e'),
+    name: 'Smaran',
+    age: '19',
+    Grade: 'A'
+  }
+]
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.countDocuments()
+5
+Atlas atlas-hiqq6o-shard-0 [primary] mydb> db.students.find().sort({age:1}.pretty()
+|
+
+
+
+
